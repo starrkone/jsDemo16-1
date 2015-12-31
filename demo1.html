@@ -35,11 +35,11 @@
             
             $("input.cnt").on('keyup', function(){
                 var sum = 0;
-                var total = parseInt($("label#total").text(),10)
+                var total = parseFloat($("label#total").text(),10)
                 
                 $.each($("input.cnt"), function(n,v){
-                    if(!isNaN(parseInt(v.value,10))) {
-                        sum += parseInt(v.value,10);
+                    if(!isNaN(parseFloat(v.value,10))) {
+                        sum += parseFloat(v.value,10);
                     }
                 })
                 
@@ -63,12 +63,12 @@
                 
                 var sum = 0;
                 var total = 100;
-                var totalCnt = parseInt($("label#total").text(),10)
+                var totalCnt = parseFloat($("label#total").text(),10)
                 //$("label#total").text(total);
                 
                 $.each($("input.per"), function(n,v){
-                    if(!isNaN(parseInt(v.value,10))) {
-                        sum += parseInt(v.value,10);
+                    if(!isNaN(parseFloat(v.value,10))) {
+                        sum += parseFloat(v.value,10);
                     }
                 })
                 
@@ -78,7 +78,7 @@
                 
                 if(sum == total){
                     $.each($("input.cnt"), function(n,v){
-                        per = parseInt($("input.per")[n].value,10)/100;
+                        per = parseFloat($("input.per")[n].value,10)/100;
                         v.value = (per*totalCnt).toFixed(2);
                     });
                 }else{
@@ -91,8 +91,8 @@
         });
         
         function getPer(cnt,sum){
-            if(isNaN(parseInt(cnt,10)) || isNaN(parseInt(sum,10))) return ""
-            cnt = parseInt(cnt,10)
+            if(isNaN(parseFloat(cnt,10)) || isNaN(parseFloat(sum,10))) return ""
+            cnt = parseFloat(cnt,10)
             return ((cnt/sum)*100).toFixed(2);
         }
         
@@ -102,13 +102,13 @@
     <div>
      Total: <label id = "total" onclick="Box()">21</label>
      InputSum: <label id = "kt" onclick="Box()">0</label>
-      Diff: <label id = "diff" onclick="Box()">0</label>
+     Diff: <label id = "diff" onclick="Box()">0</label>
     </div>
 
     <ul>
-        <li><input class = "per" id = "p_1" type="text">%<input class = "cnt" id = "c_1" type="text"></li>
-        <li><input class = "per" id = "p_2" type="text">%<input class = "cnt"  id = "c_2" type="text"></li>
-        <li><input class = "per" id = "p_3" type="text">%<input class = "cnt"  id = "c_3" type="text"></li>
+        <li><input tabindex="1" class = "per" id = "p_1" type="text">%<input class = "cnt" tabindex="101" id = "c_1" type="text"></li>
+        <li><input tabindex="2" class = "per" id = "p_2" type="text">%<input class = "cnt" tabindex="102" id = "c_2" type="text"></li>
+        <li><input tabindex="3" class = "per" id = "p_3" type="text">%<input class = "cnt" tabindex="103" id = "c_3" type="text"></li>
     </ul>
     
 </body>
