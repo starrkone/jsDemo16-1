@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hot</title>
+    <link href="jquery-ui.css" rel="stylesheet">
+	<script src="external/jquery/jquery.js"></script>
+	<script src="jquery-ui.js"></script>
+    
+    <style>
+        input {
+            width: 60px;
+            margin: 0 2px 4px 10px;
+            border: 1px solid;
+            line-height: 20px;
+            border-radius:2px;
+            padding-left: 5px;
+        }
+        label{
+            font-size: 40px;
+        }
+        label#kt{
+            color: blue;
+        }
+        label#diff{
+            color: indianred;
+        }
+    </style>
+    <script>
+        function Box(){
+            alert(event.target.innerText);
+        }
+        
+        $(function(){
+            
+            $("input.cnt").on('keyup', function(){
+                var sum = 0;
+                var total = parseInt($("label#total").text(),10)
+                
+                $.each($("input.cnt"), function(n,v){
+                    if(!isNaN(parseInt(v.value,10))) {
+                        sum += parseInt(v.value,10);
+                    }
+                })
+                
+                //set input sum and diff
+                $("label#kt").text(sum);
+                $("label#diff").text(sum-total);
+                
+                if(sum == total){
+                    $.each($("input.per"), function(n,v){
+                        v.value = getPer($("input.cnt")[n].value,sum);
+                    });
+                }else{
+                    $.each($("input.per"), function(n,v){
+                        v.value = "";
+                    });
+                }
+            });
+            
+            //when per input-------------------------------------------
+            $("input.per").on('keyup', function(){
+                
+                var sum = 0;
+                var total = 100;
+                var totalCnt = parseInt($("label#total").text(),10)
+                //$("label#total").text(total);
+                
+                $.each($("input.per"), function(n,v){
+                    if(!isNaN(parseInt(v.value,10))) {
+                        sum += parseInt(v.value,10);
+                    }
+                })
+                
+                //set input sum and diff
+                $("label#kt").text(sum);
+                $("label#diff").text(sum-total);
+                
+                if(sum == total){
+                    $.each($("input.cnt"), function(n,v){
+                        per = parseInt($("input.per")[n].value,10)/100;
+                        v.value = (per*totalCnt).toFixed(2);
+                    });
+                }else{
+                    $.each($("input.cnt"), function(n,v){
+                        v.value = "";
+                    });
+                }
+            });
+            
+        });
+        
+        function getPer(cnt,sum){
+            if(isNaN(parseInt(cnt,10)) || isNaN(parseInt(sum,10))) return ""
+            cnt = parseInt(cnt,10)
+            return ((cnt/sum)*100).toFixed(2);
+        }
+        
+    </script>
+</head>
+<body>
+    <div>
+     Total: <label id = "total" onclick="Box()">21</label>
+     InputSum: <label id = "kt" onclick="Box()">0</label>
+      Diff: <label id = "diff" onclick="Box()">0</label>
+    </div>
+
+    <ul>
+        <li><input class = "per" id = "p_1" type="text">%<input class = "cnt" id = "c_1" type="text"></li>
+        <li><input class = "per" id = "p_2" type="text">%<input class = "cnt"  id = "c_2" type="text"></li>
+        <li><input class = "per" id = "p_3" type="text">%<input class = "cnt"  id = "c_3" type="text"></li>
+    </ul>
+    
+</body>
+</html>
