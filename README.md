@@ -26,5 +26,5 @@ test3**aaab**test5
 3. zzx
 
 this is [baidu][1], and this is [sina][2]
-[1]: www.baidu.com "Baidu"
-[2]: www.sina.com "Sina"
+[1]: http://www.baidu.com "Baidu"
+[2]: http://www.sina.com "Sina"
