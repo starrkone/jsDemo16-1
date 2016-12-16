@@ -4,6 +4,9 @@
 
 [SB Admin Demo](http://blackrockdigital.github.io/startbootstrap-sb-admin-2/pages/blank.html)
 
+###Desktop Wallpaper
+http://wallpaperswide.com/elements-desktop-wallpapers.html
+
 ###e-book(pdf)
 [rails web开发敏捷之道第四版](http://htmlstream.com/preview/unify-v1.9/index.html)
 
